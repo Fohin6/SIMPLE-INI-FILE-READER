@@ -1,4 +1,5 @@
 # SIMPLE-INI-FILE-READER
+Код можно будет интегрировать в другие программы
 ```ini
 [Section 1]
 param1=1
