@@ -3,7 +3,7 @@
 ```ini
 [Section 1]
 param1=1
-param2=Token
+param2="Token"
 ```
 ```C++
 int value = GetPrivateProfileInt(L"Buttons", L"button", buttonId, folderPath); // 1 Перегрузка ищет секцию, 2 параметр, 3 считывает парметр, 4 путь к файлу
