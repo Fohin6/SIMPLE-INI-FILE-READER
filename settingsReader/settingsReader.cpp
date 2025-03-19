@@ -1,4 +1,4 @@
-﻿#include "settingsReader.h"
+#include "settingsReader.h"
 
 using namespace std;
 
@@ -25,17 +25,17 @@ wchar_t* findFolder()
 	return result;
 }
 
-int readIniInt(wchar_t* folderPath) {
+int readIniInt(const wchar_t* section, const wchar_t* param, wchar_t* folderPath) {
 	wchar_t bufferForRead[256];
 	int buttonId = 0;
 	int value = GetPrivateProfileInt(L"Buttons", L"button", buttonId, folderPath);
 	return value;
 }
 
-std::string readIniString(LPCWSTR folderPath) {
+std::string readIniString(const wchar_t* section, const wchar_t* param, LPCWSTR folderPath) {
 	//Чтение занчений из файла
 	wchar_t bufferForRead[256];
-	GetPrivateProfileString(L"BotToken", L"botToken", L"DefaultUser", bufferForRead, sizeof(bufferForRead), folderPath);
+	GetPrivateProfileString(section, param, L"DefaultUser", bufferForRead, sizeof(bufferForRead), folderPath);
 	// Преобразование wchar_t* в std::string
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 	std::string narrowStr = converter.to_bytes(bufferForRead);
@@ -47,8 +47,8 @@ std::string readIniString(LPCWSTR folderPath) {
 int main()
 {
 	wchar_t* folderPath = findFolder();
-	int bb = readIniInt(folderPath);
-	string token = readIniString(folderPath);
+	int bb = readIniInt(L"Buttons", L"button", folderPath);
+	string token = readIniString(L"BotToken", L"botToken", folderPath);
 
 
 	std::wcout << folderPath << std::endl;
