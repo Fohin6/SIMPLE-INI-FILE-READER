@@ -28,7 +28,7 @@ wchar_t* findFolder()
 int readIniInt(const wchar_t* section, const wchar_t* param, wchar_t* folderPath) {
 	wchar_t bufferForRead[256];
 	int buttonId = 0;
-	int value = GetPrivateProfileInt(L"Buttons", L"button", buttonId, folderPath);
+	int value = GetPrivateProfileInt(section, param, buttonId, folderPath);
 	return value;
 }
 
