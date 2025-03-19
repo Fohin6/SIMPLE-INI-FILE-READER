@@ -10,4 +10,4 @@
 
 wchar_t* findFolder();
 int readIniInt(const wchar_t* section, const wchar_t* param, wchar_t* folderPath);
-std::string readIniString(wchar_t* section, wchar_t* param, LPCWSTR folderPath);
+std::string readIniString(const wchar_t* section, const wchar_t* param, LPCWSTR folderPath);
